@@ -32,6 +32,8 @@ const products = [
     perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
   { name: "Shakeel", title: "Shakeel Bing Chun Edition — Jenna Ortega's BF", price: 4500, oldPrice: 12000, loc: "Western", img: "images/shakeel.png",
     perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
+{ name: "Shakeel", title: "Muhamamd Nazeer", price: 20500, oldPrice: 12000, loc: "Western", img: "images/shakeel.png",
+    perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
 ];
 
 const $ = id => document.getElementById(id);
