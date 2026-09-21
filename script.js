@@ -7,8 +7,8 @@ const products = [
     perks: ["⏰ Always 10 minutes late (feature, not bug)", "🍛 Runs on rice & curry", "🔊 Loud speaker built in", "↩️ 7 Days Return — seller will NOT accept"] },
   { name: "Febian", title: "Febian Only — Single Unit, Limited Stock, Rare Edition", price: 250, oldPrice: 15000, sold: 2, rating: 3.8, reviews: 5, loc: "Western", img: "images/febian only.png",
     perks: ["💤 Sleep mode activates in class", "🎮 Pre-installed with games", "📦 Ships in school uniform", "🛡️ Warranty: 0 days"] },
-  { name: "Nibodh", title: "Nibodh Lite — Budget Edition, Great Value for Money", price: 149, oldPrice: 9999, sold: 4, rating: 4.0, reviews: 11, loc: "Western", img: "images/nibodh.png",
-    perks: ["🧠 Knows all the answers (after the exam)", "🍪 Accepts payment in biscuits", "😂 Laugh track included", "🚚 Free delivery — he walks himself"] },
+  { name: "Nibodh", title: "Nibodh Lite — Budget Edition, Great Value for Money", price: 5999, oldPrice: 9999, sold: 4, rating: 4.0, reviews: 11, loc: "Western", img: "images/nibodh.png",
+    perks: ["🧠 Knows all the answers (after the exam)", "🍪 Accepts payment in biscuits", "😂 Laugh track included", "🚚 Free delivery — walks to you"] },
   { name: "Ragith", title: "Ragith Plus — Brand New Condition, Never Did Homework", price: 350, oldPrice: 20000, sold: 0, rating: 2.9, reviews: 4, loc: "Western", img: "images/ragith.png",
     perks: ["📚 Homework module not installed", "⚡ Fast charging: 1 samosa = full power", "🗣️ Voice assistant: talks non-stop", "❌ Non-refundable"] },
   { name: "Nibodh & Dilon", title: "COMBO DEAL 🔥 Nibodh + Dilon — Buy 1 Get 1 FREE", price: 599, oldPrice: 34999, sold: 12, rating: 4.2, reviews: 18, loc: "Western", img: "images/combo nibodh and dilon.png",
@@ -141,7 +141,7 @@ $("addCart").onclick = () => {
 };
 
 $("buyNow").onclick = prank;
-$("cartBtn").addEventListener("click", e => { e.preventDefault(); prank(); });
+$("cartBtn").addEventListener("click", e => { e.preventDefault(); current = null; prank(); });
 
 document.querySelector("[data-close]").onclick = () => $("productModal").classList.remove("show");
 $("productModal").addEventListener("click", e => {
