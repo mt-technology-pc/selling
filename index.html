@@ -12,7 +12,7 @@
   <header class="header">
     <div class="header-inner">
       <a href="#" class="logo">
-        <img src="images/" alt="Daraz">
+        <img src="images/logo.png" alt="Daraz">
       </a>
       <div class="search-wrap">
         <form class="search" id="searchForm">
@@ -149,18 +149,23 @@
     </div>
   </div>
 
+  <!-- Cart popup -->
+  <div class="modal" id="cartModal">
+    <div class="checkout-box">
+      <button type="button" class="close-x" id="closeCart" aria-label="Close">×</button>
+      <h2>My Cart</h2>
+      <ul class="cart-list" id="cartList"></ul>
+      <div class="co-total" id="cartTotalRow"><span>Total</span><strong id="cartTotal"></strong></div>
+      <button type="button" class="co-place" id="cartCheckout">Checkout</button>
+    </div>
+  </div>
+
   <!-- Checkout popup -->
   <div class="modal" id="checkoutModal">
     <form class="checkout-box" id="checkoutForm" novalidate>
       <button type="button" class="close-x" id="closeCheckout" aria-label="Close">×</button>
       <h2>Checkout</h2>
-      <div class="co-item">
-        <img id="coImage" src="" alt="">
-        <div>
-          <p class="co-title" id="coTitle"></p>
-          <p class="co-qty" id="coQty"></p>
-        </div>
-      </div>
+      <ul class="co-items" id="coItems"></ul>
       <div class="co-total"><span>Total</span><strong id="coTotal"></strong></div>
       <label class="co-label" for="coName">Your name</label>
       <input class="co-input" id="coName" type="text" maxlength="60" placeholder="Enter your full name" autocomplete="name" required>
@@ -184,6 +189,7 @@
 
   <button class="messages">💬 Messages</button>
 
+  <script src="config.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

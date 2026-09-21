@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Shop Admin</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- Login -->
+  <main class="login" id="loginView" hidden>
+    <form class="login-box" id="loginForm" novalidate>
+      <img src="images/logo.png" alt="" class="login-logo">
+      <h1>Admin sign in</h1>
+      <label for="loginEmail">Email</label>
+      <input id="loginEmail" type="email" autocomplete="username" required>
+      <label for="loginPassword">Password</label>
+      <input id="loginPassword" type="password" autocomplete="current-password" required>
+      <p class="error" id="loginError" role="alert"></p>
+      <button type="submit" class="btn primary wide" id="loginBtn">Sign in</button>
+      <a href="index.html" class="back-link">← Back to shop</a>
+    </form>
+  </main>
+
+  <!-- Admin app -->
+  <div id="appView" hidden>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a href="index.html" class="brand"><img src="images/logo.png" alt="Shop"> <span>Admin</span></a>
+        <div class="topbar-right">
+          <span class="who" id="whoami"></span>
+          <a href="index.html" class="btn ghost" target="_blank">View shop</a>
+          <button class="btn ghost" id="logoutBtn">Sign out</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="stats">
+        <div class="stat"><span class="stat-label">Products</span><strong id="statProducts">–</strong></div>
+        <div class="stat"><span class="stat-label">Orders</span><strong id="statOrders">–</strong></div>
+        <div class="stat"><span class="stat-label">Revenue</span><strong id="statRevenue">–</strong></div>
+        <div class="stat"><span class="stat-label">Reviews</span><strong id="statReviews">–</strong></div>
+      </section>
+
+      <nav class="tabs" role="tablist">
+        <button class="tab active" data-tab="products" role="tab">Products</button>
+        <button class="tab" data-tab="orders" role="tab">Orders</button>
+        <button class="tab" data-tab="reviews" role="tab">Reviews</button>
+      </nav>
+
+      <!-- Products -->
+      <section class="panel" id="panel-products">
+        <div class="panel-head">
+          <h2>Products</h2>
+          <div class="head-actions">
+            <button class="btn ghost" id="migrateBtn" hidden>⬆ Upload photos to Storage</button>
+            <button class="btn primary" id="addProductBtn">+ Add product</button>
+          </div>
+        </div>
+        <ul class="product-list" id="productList"></ul>
+      </section>
+
+      <!-- Orders -->
+      <section class="panel" id="panel-orders" hidden>
+        <div class="panel-head"><h2>Orders</h2></div>
+        <table class="table">
+          <thead><tr><th>Date</th><th>Buyer</th><th>Product</th><th>Qty</th><th>Total</th><th></th></tr></thead>
+          <tbody id="orderRows"></tbody>
+        </table>
+      </section>
+
+      <!-- Reviews -->
+      <section class="panel" id="panel-reviews" hidden>
+        <div class="panel-head"><h2>Reviews</h2></div>
+        <ul class="review-list" id="reviewList"></ul>
+      </section>
+    </main>
+  </div>
+
+  <!-- Add / edit product -->
+  <div class="modal" id="productModal">
+    <form class="modal-box" id="productForm" novalidate>
+      <button type="button" class="close-x" id="closeProduct" aria-label="Close">×</button>
+      <h2 id="formTitle">Add product</h2>
+
+      <div class="img-pick">
+        <img id="pfPreview" alt="" hidden>
+        <div class="img-empty" id="pfEmpty">No photo yet</div>
+        <label class="btn ghost file-btn">
+          Choose photo
+          <input id="pfImage" type="file" accept="image/png,image/jpeg,image/webp,image/gif">
+        </label>
+      </div>
+
+      <div class="grid2">
+        <div class="field">
+          <label for="pfName">Name</label>
+          <input id="pfName" maxlength="40" required>
+          <small id="pfNameHint">Shown in the prank popup. Can't be changed later.</small>
+        </div>
+        <div class="field">
+          <label for="pfLoc">Location</label>
+          <input id="pfLoc" maxlength="30" value="Western">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="pfTitle">Title</label>
+        <input id="pfTitle" maxlength="120" required>
+      </div>
+
+      <div class="grid2">
+        <div class="field">
+          <label for="pfPrice">Price (Rs.)</label>
+          <input id="pfPrice" type="number" min="0" step="1" inputmode="numeric" required>
+        </div>
+        <div class="field">
+          <label for="pfOld">Old price (Rs.) <span class="opt">optional</span></label>
+          <input id="pfOld" type="number" min="0" step="1" inputmode="numeric">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="pfPerks">Perks <span class="opt">one per line</span></label>
+        <textarea id="pfPerks" rows="4"></textarea>
+      </div>
+
+      <div class="grid2">
+        <div class="field">
+          <label for="pfSort">Position <span class="opt">lower = first</span></label>
+          <input id="pfSort" type="number" step="1" value="100" inputmode="numeric">
+        </div>
+        <div class="field checks">
+          <label class="check"><input type="checkbox" id="pfHot"> 🔥 Hot selling badge</label>
+          <label class="check"><input type="checkbox" id="pfActive" checked> Show in shop</label>
+        </div>
+      </div>
+
+      <p class="error" id="pfError" role="alert"></p>
+      <div class="form-actions">
+        <button type="button" class="btn ghost" id="cancelProduct">Cancel</button>
+        <button type="submit" class="btn primary" id="saveProduct">Save</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

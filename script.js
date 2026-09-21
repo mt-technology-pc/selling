@@ -1,50 +1,18 @@
-// Supabase — paste your project URL and anon (public) key here.
-// Find them in Supabase: Project Settings → API. Run supabase.sql once first.
-const SUPABASE_URL = "https://mxbtxogjmvqwvrpwbijn.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im14YnR4b2dqbXZxd3ZycHdiaWpuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk5NzYwMjIsImV4cCI6MjEwNTU1MjAyMn0.903jBBz0qJ0deVj4RWtM6H7a0jf_LzJfXGxyNy0H0Xs";
+// SUPABASE_URL and SUPABASE_KEY come from config.js
 
-// Product data — edit titles, prices (numbers, in Rs.) and images here.
-// Friend listings have a `name` (used in the prank popup and to count orders) and their own `perks`.
-const products = [
-  { name: "hanash", hot: true, title: "🔥 HOT SELLING 🔥 hanash — Buy 1 Get 1 FREE", price: 899, oldPrice: 34999, loc: "Western", img: "images/hanash.png",
-    perks: ["🔥 #1 Best Seller this week", "⚡ Selling fast — only 2 left in stock!", "🎁 Buy 1 Get 1 FREE (limited time)", "⚠️ Seller not responsible for chaos"] },
-  { name: "Chenuk", title: "Chenuk Pro Max 2026 — Original, Slightly Used, No Box", price: 499, oldPrice: 49900, loc: "Western", img: "images/chenuk.png",
-    perks: ["🔋 Battery: needs a snack every 2 hours", "🤓 Built-in glasses, free of charge", "📶 Replies to WhatsApp: sometimes", "❌ No warranty, no returns"] },
-  { name: "Dilon", title: "Dilon Ultra — Genuine Model, Comes With Free Excuses", price: 999, oldPrice: 25000, loc: "Western", img: "images/dilon.png",
-    perks: ["⏰ Always 10 minutes late (feature, not bug)", "🍛 Runs on rice & curry", "🔊 Loud speaker built in", "↩️ 7 Days Return — seller will NOT accept"] },
-  { name: "Febian", title: "Febian Only — Single Unit, Limited Stock, Rare Edition", price: 250, oldPrice: 15000, loc: "Western", img: "images/febian only.png",
-    perks: ["💤 Sleep mode activates in class", "🎮 Pre-installed with games", "📦 Ships in school uniform", "🛡️ Warranty: 0 days"] },
-  { name: "Nibodh", title: "Nibodh Lite — Budget Edition, Great Value for Money", price: 5999, oldPrice: 9999, loc: "Western", img: "images/nibodh.png",
-    perks: ["🧠 Knows all the answers (after the exam)", "🍪 Accepts payment in biscuits", "😂 Laugh track included", "🚚 Free delivery — walks to you"] },
-  { name: "Ragith", title: "Ragith Plus — Brand New Condition, Never Did Homework", price: 350, oldPrice: 20000, loc: "Western", img: "images/ragith.png",
-    perks: ["📚 Homework module not installed", "⚡ Fast charging: 1 samosa = full power", "🗣️ Voice assistant: talks non-stop", "❌ Non-refundable"] },
-  { name: "Diyon", title: "Diyon Mini — Clearance Sale, Comes With Free Birds 🐦", price: 20, oldPrice: 5000, loc: "Western", img: "images/diyon.jpg",
-    perks: ["🐦 Free flying birds included (dizzy mode)", "😴 Always in low-power mode", "📦 Cheapest item in the store", "❌ No returns, seriously"] },
-  { name: "Nibodh & Dilon", title: "COMBO DEAL 🔥 Nibodh + Dilon — Buy 1 Get 1 FREE", price: 599, oldPrice: 34999, loc: "Western", img: "images/combo nibodh and dilon.png",
-    perks: ["👯 Cannot be separated, sold as a pair", "🔊 Double the noise", "🎁 Free tempered glass (not really)", "⚠️ Seller not responsible for chaos"] },
-  { name: "the Squad", title: "MEGA COMBO PACK 🎉 Full Squad Bundle — 9.9 Mega Deals", price: 999, oldPrice: 99999, loc: "Western", img: "images/combo pack.jpg",
-    perks: ["📦 Whole gang in one box", "📸 Poses for every photo", "🍕 Warning: will eat all your food", "🚚 Free island-wide delivery"] },
-  { name: "Didula", title: "Didula Max — Latest Model, Fresh Stock, Hurry Up!", price: 150, oldPrice: 12000, loc: "Western", img: "images/didula.png",
-    perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
-  { name: "Siddharth", title: "Siddharth Max — Latest Model, Fresh Stock, Hurry Up!", price: 4500, oldPrice: 12000, loc: "Western", img: "images/sid.png",
-    perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
-  { name: "Imadh", title: "Imadh Lareef — Limited Stock Edition", price: 4500, oldPrice: 12000, loc: "Western", img: "images/imadh.png",
-    perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
-  { name: "Shakeel", title: "Shakeel Bing Chun Edition — Jenna Ortega's BF", price: 4500, oldPrice: 12000, loc: "Western", img: "images/shakeel.png",
-    perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
-{ name: "muhammad", title: "Muhamamd Nazeer", price: 20500, oldPrice: 12000, loc: "Western", img: "images/Screenshot 2026-09-21 at 14.57.28.png",
-    perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
-];
+// Products (friends) are loaded from the Supabase `products` table — manage them in admin.html.
+let products = [];
 
 const $ = id => document.getElementById(id);
 const fmt = n => "Rs. " + n.toLocaleString("en-US");
 const stars = r => "★".repeat(Math.round(r)) + "☆".repeat(5 - Math.round(r));
 const defaultPerks = ["✅ 100% Original Device", "🚚 Free Delivery Island-wide", "🛡️ 6 Months Warranty", "↩️ 7 Days Easy Return"];
-const friends = products.filter(p => p.name);
 
 let query = "iphone";
 let sortBy = "best";
-let cartCount = 0;
+let cart = loadCart();  // [{ name, qty }] — remembered in this browser
+let checkoutItems = []; // [{ p, qty }] being checked out right now
+let checkoutFromCart = false;
 let current = null;
 let qty = 1;
 let realOrders = {}; // product name → number of real orders saved in Supabase
@@ -60,6 +28,24 @@ async function saveOrder(order) {
     method: "POST", headers: { ...sbHeaders, Prefer: "return=minimal" }, body: JSON.stringify(order),
   });
   if (!res.ok) throw new Error(await res.text());
+}
+
+async function loadProducts() {
+  if (!supabaseReady) { $("grid").innerHTML = `<p class="empty">Add your Supabase URL and key in script.js.</p>`; return; }
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/products?select=*&active=eq.true&order=sort_order.asc,id.asc`, { headers: sbHeaders });
+    if (!res.ok) throw new Error(await res.text());
+    products = (await res.json()).map(r => ({
+      name: r.name, title: r.title, price: r.price, oldPrice: r.old_price,
+      loc: r.loc, img: r.img, perks: r.perks, hot: r.hot,
+    }));
+    cart = cart.filter(c => products.some(p => p.name === c.name)); // drop products that no longer exist
+    updateCartBadge();
+    render();
+  } catch (err) {
+    console.error("Could not load products:", err);
+    $("grid").innerHTML = `<p class="empty">Couldn't load products. Please refresh the page.</p>`;
+  }
 }
 
 async function loadOrderCounts() {
@@ -99,6 +85,8 @@ const soldCount = p => realOrders[p.name] || 0;
 const reviewsFor = p => reviews.filter(r => r.product_name === p.name);
 const avgRating = rs => rs.length ? rs.reduce((a, r) => a + r.rating, 0) / rs.length : 0;
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+// Only show a discount when the old price is actually higher
+const discountOf = p => p.oldPrice > p.price ? Math.round((1 - p.price / p.oldPrice) * 100) : 0;
 const totalRealOrders = () => Object.values(realOrders).reduce((a, b) => a + b, 0);
 
 function render() {
@@ -117,25 +105,25 @@ function render() {
 
   $("grid").innerHTML = list.length ? list.map(p => {
     const i = products.indexOf(p);
-    const off = p.oldPrice ? Math.round((1 - p.price / p.oldPrice) * 100) : 0;
+    const off = discountOf(p);
     const sold = soldCount(p);
     const rs = reviewsFor(p);
     return `
       <article class="card" data-id="${i}">
         <div class="thumb">
-          <img src="${encodeURI(p.img)}" alt="${p.title}" loading="lazy">
+          <img src="${encodeURI(p.img)}" alt="${esc(p.title)}" loading="lazy">
           ${off ? `<span class="off-tag">-${off}%</span>` : ""}
           ${p.hot ? `<span class="hot-tag">🔥 HOT SELLING</span>` : ""}
         </div>
         <div class="info">
-          <h4>${p.title}</h4>
+          <h4>${esc(p.title)}</h4>
           <div class="price">${fmt(p.price)}</div>
           ${off ? `<div class="discount"><s>${fmt(p.oldPrice)}</s> ${off}% Off</div>` : ""}
           <div class="meta">
             <span>${sold ? sold + ' sold <span class="sep">|</span> ' : ""}${rs.length
               ? `<span class="stars">${stars(avgRating(rs))}</span><span class="rc">(${rs.length})</span>`
               : `<span class="rc">No ratings</span>`}</span>
-            <span class="loc">${p.loc}</span>
+            <span class="loc">${esc(p.loc)}</span>
           </div>
         </div>
       </article>`;
@@ -147,7 +135,7 @@ function openProduct(i) {
   qty = 1;
   $("qty").textContent = qty;
   $("pdImage").src = encodeURI(current.img);
-  $("pdPerks").innerHTML = (current.perks || defaultPerks).map(t => `<li>${t}</li>`).join("");
+  $("pdPerks").innerHTML = (current.perks || defaultPerks).map(t => `<li>${esc(t)}</li>`).join("");
   $("pdImage").alt = current.title;
   $("pdTitle").textContent = current.title;
   $("reviewForm").reset();
@@ -155,8 +143,8 @@ function openProduct(i) {
   $("rvError").textContent = "";
   renderProductRating();
   $("pdPrice").textContent = fmt(current.price);
-  $("pdOld").innerHTML = current.oldPrice
-    ? `<s>${fmt(current.oldPrice)}</s> -${Math.round((1 - current.price / current.oldPrice) * 100)}%` : "";
+  $("pdOld").innerHTML = discountOf(current)
+    ? `<s>${fmt(current.oldPrice)}</s> -${discountOf(current)}%` : "";
   $("productModal").classList.add("show");
 }
 
@@ -222,15 +210,75 @@ async function postReview(e) {
   }
 }
 
-function openCheckout() {
-  $("coImage").src = encodeURI(current.img);
-  $("coTitle").textContent = current.title;
-  $("coQty").textContent = `${fmt(current.price)} × ${qty}`;
-  $("coTotal").textContent = fmt(current.price * qty);
+function openCheckout(items, fromCart) {
+  checkoutItems = items;
+  checkoutFromCart = fromCart;
+  $("coItems").innerHTML = items.map(({ p, qty }) => `
+    <li class="co-item">
+      <img src="${encodeURI(p.img)}" alt="">
+      <div>
+        <p class="co-title">${esc(p.title)}</p>
+        <p class="co-qty">${fmt(p.price)} × ${qty}</p>
+      </div>
+    </li>`).join("");
+  $("coTotal").textContent = fmt(itemsTotal(items));
   $("coError").textContent = "";
   $("productModal").classList.remove("show");
+  $("cartModal").classList.remove("show");
   $("checkoutModal").classList.add("show");
   $("coName").focus();
+}
+
+// --- Cart ---
+function loadCart() {
+  try { return JSON.parse(localStorage.getItem("cart")) || []; } catch { return []; }
+}
+function saveCart() {
+  try { localStorage.setItem("cart", JSON.stringify(cart)); } catch {}
+}
+const itemsTotal = items => items.reduce((sum, { p, qty }) => sum + p.price * qty, 0);
+const cartItems = () => cart.map(c => ({ p: products.find(p => p.name === c.name), qty: c.qty })).filter(c => c.p);
+
+function updateCartBadge(bump) {
+  $("cartCount").textContent = cart.reduce((n, c) => n + c.qty, 0);
+  if (!bump) return;
+  $("cartCount").classList.add("bump");
+  setTimeout(() => $("cartCount").classList.remove("bump"), 300);
+}
+
+function addToCart(p, n) {
+  const line = cart.find(c => c.name === p.name);
+  if (line) line.qty = Math.min(5, line.qty + n);
+  else cart.push({ name: p.name, qty: n });
+  saveCart();
+  updateCartBadge(true);
+}
+
+function renderCart() {
+  const items = cartItems();
+  $("cartList").innerHTML = items.length ? items.map(({ p, qty }, i) => `
+    <li class="cart-item">
+      <img src="${encodeURI(p.img)}" alt="">
+      <div class="cart-info">
+        <p class="co-title">${esc(p.title)}</p>
+        <p class="cart-price">${fmt(p.price * qty)}</p>
+        <div class="cart-qty">
+          <button type="button" data-action="minus" data-i="${i}" aria-label="Less">−</button>
+          <span>${qty}</span>
+          <button type="button" data-action="plus" data-i="${i}" aria-label="More">+</button>
+          <button type="button" class="cart-remove" data-action="remove" data-i="${i}">Remove</button>
+        </div>
+      </div>
+    </li>`).join("")
+    : `<li class="cart-empty">🛒 Your cart is empty</li>`;
+  $("cartTotal").textContent = fmt(itemsTotal(items));
+  $("cartTotalRow").hidden = !items.length;
+  $("cartCheckout").hidden = !items.length;
+}
+
+function openCart() {
+  renderCart();
+  $("cartModal").classList.add("show");
 }
 
 async function placeOrder(e) {
@@ -242,11 +290,13 @@ async function placeOrder(e) {
   $("coPlace").disabled = true;
   $("coPlace").textContent = "Placing order…";
   try {
-    await saveOrder({ buyer_name: name, product_name: current.name, product_title: current.title, qty, total: current.price * qty });
-    realOrders[current.name] = (realOrders[current.name] || 0) + 1;
+    await saveOrder(checkoutItems.map(({ p, qty }) =>
+      ({ buyer_name: name, product_name: p.name, product_title: p.title, qty, total: p.price * qty })));
+    checkoutItems.forEach(({ p }) => { realOrders[p.name] = (realOrders[p.name] || 0) + 1; });
+    if (checkoutFromCart) { cart = []; saveCart(); updateCartBadge(); }
     render();
     $("checkoutForm").reset();
-    prank();
+    prank(checkoutItems);
   } catch (err) {
     console.error("Order failed:", err);
     $("coError").textContent = "Couldn't place the order. Please try again.";
@@ -256,13 +306,12 @@ async function placeOrder(e) {
   }
 }
 
-// Shows the friend they tried to buy (or a random friend if they clicked the cart)
-function prank() {
-  const f = current && current.name ? current : friends[Math.floor(Math.random() * friends.length)];
+// Shows the friend they just "bought" after placing an order
+function prank(items) {
+  const f = items[0].p;
+  const more = items.length > 1 ? ` + ${items.length - 1} MORE` : "";
   $("prankPhoto").src = encodeURI(f.img);
-  $("prankTitle").textContent = current && current.name
-    ? `YOU TRIED TO BUY ${f.name.toUpperCase()}? 😂`
-    : `HAHA, YOU GOT PRANKED BY ${f.name.toUpperCase()}!`;
+  $("prankTitle").textContent = `YOU TRIED TO BUY ${f.name.toUpperCase()}${more}? 😂`;
   $("productModal").classList.remove("show");
   $("checkoutModal").classList.remove("show");
   $("modal").classList.add("show");
@@ -300,21 +349,35 @@ $("qtyMinus").onclick = () => { qty = Math.max(1, qty - 1); $("qty").textContent
 $("qtyPlus").onclick  = () => { qty = Math.min(5, qty + 1); $("qty").textContent = qty; };
 
 $("addCart").onclick = () => {
-  cartCount += qty;
-  $("cartCount").textContent = cartCount;
-  $("cartCount").classList.add("bump");
-  setTimeout(() => $("cartCount").classList.remove("bump"), 300);
+  addToCart(current, qty);
   $("productModal").classList.remove("show");
   toast(`Added ${qty} to cart ✓`);
 };
 
-$("buyNow").onclick = openCheckout;
+$("buyNow").onclick = () => openCheckout([{ p: current, qty }], false);
+
+$("cartList").addEventListener("click", e => {
+  const b = e.target.closest("button[data-action]");
+  if (!b) return;
+  const line = cart[+b.dataset.i];
+  if (b.dataset.action === "plus") line.qty = Math.min(5, line.qty + 1);
+  if (b.dataset.action === "minus") line.qty = Math.max(1, line.qty - 1);
+  if (b.dataset.action === "remove") cart.splice(+b.dataset.i, 1);
+  saveCart();
+  updateCartBadge();
+  renderCart();
+});
+$("cartCheckout").onclick = () => openCheckout(cartItems(), true);
+$("closeCart").onclick = () => $("cartModal").classList.remove("show");
+$("cartModal").addEventListener("click", e => {
+  if (e.target.id === "cartModal") $("cartModal").classList.remove("show");
+});
 $("checkoutForm").addEventListener("submit", placeOrder);
 $("closeCheckout").onclick = () => $("checkoutModal").classList.remove("show");
 $("checkoutModal").addEventListener("click", e => {
   if (e.target.id === "checkoutModal") $("checkoutModal").classList.remove("show");
 });
-$("cartBtn").addEventListener("click", e => { e.preventDefault(); current = null; prank(); });
+$("cartBtn").addEventListener("click", e => { e.preventDefault(); openCart(); });
 
 document.querySelector("[data-close]").onclick = () => $("productModal").classList.remove("show");
 $("productModal").addEventListener("click", e => {
@@ -326,6 +389,8 @@ $("reviewForm").addEventListener("submit", postReview);
 document.querySelectorAll("#rvStars button").forEach(b =>
   b.addEventListener("click", () => setRvRating(+b.dataset.v)));
 
-render();
+updateCartBadge();
+$("grid").innerHTML = `<p class="empty">Loading…</p>`;
+loadProducts();
 loadOrderCounts();
 loadReviews();
