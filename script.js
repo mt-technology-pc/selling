@@ -1,7 +1,7 @@
 // Product data — edit titles, prices (numbers, in Rs.) and images here.
 // Friend listings have a `name` (used in the prank popup) and their own `perks`.
 const products = [
-  { name: "hanash", hot: true, title: "🔥 HOT SELLING 🔥 hanash — Buy 1 Get 1 FREE", price: 899, oldPrice: 34999, sold: 999, rating: 4.9, reviews: 512, loc: "Western", img: "images/Screenshot 2026-09-21 at 11.49.40.png",
+  { name: "hanash", hot: true, title: "🔥 HOT SELLING 🔥 hanash — Buy 1 Get 1 FREE", price: 899, oldPrice: 34999, sold: 999, rating: 4.9, reviews: 512, loc: "Western", img: "images/hanash.png",
     perks: ["🔥 #1 Best Seller this week", "⚡ Selling fast — only 2 left in stock!", "🎁 Buy 1 Get 1 FREE (limited time)", "⚠️ Seller not responsible for chaos"] },
   { name: "Chenuk", title: "Chenuk Pro Max 2026 — Original, Slightly Used, No Box", price: 499, oldPrice: 49900, sold: 0, rating: 2.1, reviews: 3, loc: "Western", img: "images/chenuk.png",
     perks: ["🔋 Battery: needs a snack every 2 hours", "🤓 Built-in glasses, free of charge", "📶 Replies to WhatsApp: sometimes", "❌ No warranty, no returns"] },
@@ -22,6 +22,8 @@ const products = [
   { name: "Didula", title: "Didula Max — Latest Model, Fresh Stock, Hurry Up!", price: 150, oldPrice: 12000, sold: 3, rating: 3.6, reviews: 6, loc: "Western", img: "images/didula.png",
     perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
    { name: "Didula", title: "Didula Max — Latest Model, Fresh Stock, Hurry Up!", price: 150, oldPrice: 12000, sold: 3, rating: 3.6, reviews: 6, loc: "Western", img: "images/didula.png",
+    perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
+       { name: "Siddhatha Araryan banda", title: "Siddharth mal Max — Latest Model, Fresh Stock, Hurry Up!", price: 4500, oldPrice: 12000, sold: 3, rating: 3.6, reviews: 6, loc: "Western", img: "images/sid.png",
     perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
 ];
 
