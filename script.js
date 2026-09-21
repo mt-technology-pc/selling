@@ -19,6 +19,8 @@ const products = [
     perks: ["📦 Whole gang in one box", "📸 Poses for every photo", "🍕 Warning: will eat all your food", "🚚 Free island-wide delivery"] },
   { name: "hanash", title: "COMBO DEAL 🔥 hanash — Buy 1 Get 1 FREE", price: 899, oldPrice: 34999, sold: 12, rating: 4.2, reviews: 18, loc: "Western", img: "images/hanash.png",
     perks: ["👯 Cannot be separated, sold as a pair", "🔊 Double the noise", "🎁 Free tempered glass (not really)", "⚠️ Seller not responsible for chaos"] },
+  { name: "Didula", title: "Didula Max — Latest Model, Fresh Stock, Hurry Up!", price: 150, oldPrice: 12000, sold: 3, rating: 3.6, reviews: 6, loc: "Western", img: "images/didula.png",
+    perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
   { title: "Genuine iphone 8, iphone 7 & iphone 6s With Warranty", price: 29900, oldPrice: 39900, sold: 37, rating: 4.8, reviews: 9,  loc: "North Central", img: "images/iphone-8-gold.svg" },
   { title: "iPhone 7 32GB Phone only Best Cond A Grade Original",     price: 24000, sold: 7,  rating: 5.0, reviews: 1,  loc: "Western",       img: "images/iphone-7-rose.svg" },
   { title: "iPhone 7 ✅128GB Phone only Best Condition A Grade Original free tempered", price: 29000, sold: 0, rating: 5.0, reviews: 1, loc: "Western", img: "images/iphone-7-silver.svg" },
