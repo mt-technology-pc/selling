@@ -30,7 +30,7 @@ const products = [
     perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
   { name: "Imadh", title: "Imadh Lareef — Limited Stock Edition", price: 4500, oldPrice: 12000, rating: 3.6, reviews: 6, loc: "Western", img: "images/imadh.png",
     perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
-  { name: "Shakeel", title: "Shakeel Bing Chun Edition — Jenna Ortega's BF", price: 4500, oldPrice: 12000, rating: 3.6, reviews: 6, loc: "Western", img: "images/shakeel.png",
+  { name: "Shakeel", title: "Shakeel Bing Chun Edition — Jenna Ortega's BF", price: -500, oldPrice: 12000, rating: 3.6, reviews: 6, loc: "Western", img: "images/shakeel.png",
     perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
 ];
 
