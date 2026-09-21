@@ -1,35 +1,38 @@
+// Supabase — paste your project URL and anon (public) key here.
+// Find them in Supabase: Project Settings → API. Run supabase.sql once first.
+const SUPABASE_URL = "https://mxbtxogjmvqwvrpwbijn.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im14YnR4b2dqbXZxd3ZycHdiaWpuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk5NzYwMjIsImV4cCI6MjEwNTU1MjAyMn0.903jBBz0qJ0deVj4RWtM6H7a0jf_LzJfXGxyNy0H0Xs";
+
 // Product data — edit titles, prices (numbers, in Rs.) and images here.
-// Friend listings have a `name` (used in the prank popup) and their own `perks`.
+// Friend listings have a `name` (used in the prank popup and to count orders) and their own `perks`.
 const products = [
-  { name: "hanash", hot: true, title: "🔥 HOT SELLING 🔥 hanash — Buy 1 Get 1 FREE", price: 899, oldPrice: 34999, sold: 999, rating: 4.9, reviews: 512, loc: "Western", img: "images/hanash.png",
+  { name: "hanash", hot: true, title: "🔥 HOT SELLING 🔥 hanash — Buy 1 Get 1 FREE", price: 899, oldPrice: 34999, rating: 4.9, reviews: 512, loc: "Western", img: "images/hanash.png",
     perks: ["🔥 #1 Best Seller this week", "⚡ Selling fast — only 2 left in stock!", "🎁 Buy 1 Get 1 FREE (limited time)", "⚠️ Seller not responsible for chaos"] },
-  { name: "Chenuk", title: "Chenuk Pro Max 2026 — Original, Slightly Used, No Box", price: 499, oldPrice: 49900, sold: 0, rating: 2.1, reviews: 3, loc: "Western", img: "images/chenuk.png",
+  { name: "Chenuk", title: "Chenuk Pro Max 2026 — Original, Slightly Used, No Box", price: 499, oldPrice: 49900, rating: 2.1, reviews: 3, loc: "Western", img: "images/chenuk.png",
     perks: ["🔋 Battery: needs a snack every 2 hours", "🤓 Built-in glasses, free of charge", "📶 Replies to WhatsApp: sometimes", "❌ No warranty, no returns"] },
-  { name: "Dilon", title: "Dilon Ultra — Genuine Model, Comes With Free Excuses", price: 999, oldPrice: 25000, sold: 1, rating: 3.4, reviews: 7, loc: "Western", img: "images/dilon.png",
+  { name: "Dilon", title: "Dilon Ultra — Genuine Model, Comes With Free Excuses", price: 999, oldPrice: 25000, rating: 3.4, reviews: 7, loc: "Western", img: "images/dilon.png",
     perks: ["⏰ Always 10 minutes late (feature, not bug)", "🍛 Runs on rice & curry", "🔊 Loud speaker built in", "↩️ 7 Days Return — seller will NOT accept"] },
-  { name: "Febian", title: "Febian Only — Single Unit, Limited Stock, Rare Edition", price: 250, oldPrice: 15000, sold: 2, rating: 3.8, reviews: 5, loc: "Western", img: "images/febian only.png",
+  { name: "Febian", title: "Febian Only — Single Unit, Limited Stock, Rare Edition", price: 250, oldPrice: 15000, rating: 3.8, reviews: 5, loc: "Western", img: "images/febian only.png",
     perks: ["💤 Sleep mode activates in class", "🎮 Pre-installed with games", "📦 Ships in school uniform", "🛡️ Warranty: 0 days"] },
-  { name: "Nibodh", title: "Nibodh Lite — Budget Edition, Great Value for Money", price: 5999, oldPrice: 9999, sold: 4, rating: 4.0, reviews: 11, loc: "Western", img: "images/nibodh.png",
+  { name: "Nibodh", title: "Nibodh Lite — Budget Edition, Great Value for Money", price: 5999, oldPrice: 9999, rating: 4.0, reviews: 11, loc: "Western", img: "images/nibodh.png",
     perks: ["🧠 Knows all the answers (after the exam)", "🍪 Accepts payment in biscuits", "😂 Laugh track included", "🚚 Free delivery — walks to you"] },
-  { name: "Ragith", title: "Ragith Plus — Brand New Condition, Never Did Homework", price: 350, oldPrice: 20000, sold: 0, rating: 2.9, reviews: 4, loc: "Western", img: "images/ragith.png",
+  { name: "Ragith", title: "Ragith Plus — Brand New Condition, Never Did Homework", price: 350, oldPrice: 20000, rating: 2.9, reviews: 4, loc: "Western", img: "images/ragith.png",
     perks: ["📚 Homework module not installed", "⚡ Fast charging: 1 samosa = full power", "🗣️ Voice assistant: talks non-stop", "❌ Non-refundable"] },
-  { name: "Diyon", title: "Diyon Mini — Clearance Sale, Comes With Free Birds 🐦", price: 20, oldPrice: 5000, sold: 0, rating: 1.9, reviews: 2, loc: "Western", img: "images/diyon.jpg",
+  { name: "Diyon", title: "Diyon Mini — Clearance Sale, Comes With Free Birds 🐦", price: 20, oldPrice: 5000, rating: 1.9, reviews: 2, loc: "Western", img: "images/diyon.jpg",
     perks: ["🐦 Free flying birds included (dizzy mode)", "😴 Always in low-power mode", "📦 Cheapest item in the store", "❌ No returns, seriously"] },
-  { name: "Nibodh & Dilon", title: "COMBO DEAL 🔥 Nibodh + Dilon — Buy 1 Get 1 FREE", price: 599, oldPrice: 34999, sold: 12, rating: 4.2, reviews: 18, loc: "Western", img: "images/combo nibodh and dilon.png",
+  { name: "Nibodh & Dilon", title: "COMBO DEAL 🔥 Nibodh + Dilon — Buy 1 Get 1 FREE", price: 599, oldPrice: 34999, rating: 4.2, reviews: 18, loc: "Western", img: "images/combo nibodh and dilon.png",
     perks: ["👯 Cannot be separated, sold as a pair", "🔊 Double the noise", "🎁 Free tempered glass (not really)", "⚠️ Seller not responsible for chaos"] },
-  { name: "the Squad", title: "MEGA COMBO PACK 🎉 Full Squad Bundle — 9.9 Mega Deals", price: 999, oldPrice: 99999, sold: 33, rating: 4.6, reviews: 27, loc: "Western", img: "images/combo pack.jpg",
+  { name: "the Squad", title: "MEGA COMBO PACK 🎉 Full Squad Bundle — 9.9 Mega Deals", price: 999, oldPrice: 99999, rating: 4.6, reviews: 27, loc: "Western", img: "images/combo pack.jpg",
     perks: ["📦 Whole gang in one box", "📸 Poses for every photo", "🍕 Warning: will eat all your food", "🚚 Free island-wide delivery"] },
-  { name: "Didula", title: "Didula Max — Latest Model, Fresh Stock, Hurry Up!", price: 150, oldPrice: 12000, sold: 3, rating: 3.6, reviews: 6, loc: "Western", img: "images/didula.png",
+  { name: "Didula", title: "Didula Max — Latest Model, Fresh Stock, Hurry Up!", price: 150, oldPrice: 12000, rating: 3.6, reviews: 6, loc: "Western", img: "images/didula.png",
     perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
-   { name: "Didula", title: "Didula Max — Latest Model, Fresh Stock, Hurry Up!", price: 150, oldPrice: 12000, sold: 3, rating: 3.6, reviews: 6, loc: "Western", img: "images/didula.png",
+  { name: "Siddharth", title: "Siddharth Max — Latest Model, Fresh Stock, Hurry Up!", price: 4500, oldPrice: 12000, rating: 3.6, reviews: 6, loc: "Western", img: "images/sid.png",
     perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
-       { name: "Siddhatha Araryan banda", title: "Siddharth mal Max — Latest Model, Fresh Stock, Hurry Up!", price: 4500, oldPrice: 12000, sold: 3, rating: 3.6, reviews: 6, loc: "Western", img: "images/sid.png",
+  { name: "Imadh", title: "Imadh Lareef — Limited Stock Edition", price: 4500, oldPrice: 12000, rating: 3.6, reviews: 6, loc: "Western", img: "images/imadh.png",
     perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
-  { name: "Imadh Lareef", title: "Imadh Lareef limited stock pedo edition", price: -500, oldPrice: 12000, sold: 3, rating: 3.6, reviews: 6, loc: "Western", img: "images/imadh.png",
+  { name: "Shakeel", title: "Shakeel Bing Chun Edition — Jenna Ortega's BF", price: 4500, oldPrice: 12000, rating: 3.6, reviews: 6, loc: "Western", img: "images/shakeel.png",
     perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
-   { name: "Imadh Lareef", title: "Shakeel bing chun edition jenna ortega bf", price: 400, oldPrice: 12000, sold: 3, rating: 3.6, reviews: 6, loc: "Western", img: "images/shakeel.png",
-    perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
-  ];
+];
 
 const $ = id => document.getElementById(id);
 const fmt = n => "Rs. " + n.toLocaleString("en-US");
@@ -42,6 +45,33 @@ let sortBy = "best";
 let cartCount = 0;
 let current = null;
 let qty = 1;
+let realOrders = {}; // product name → number of real orders saved in Supabase
+
+// --- Supabase ---
+const supabaseReady = !SUPABASE_URL.includes("YOUR-PROJECT") && !SUPABASE_KEY.includes("YOUR-ANON-KEY");
+const sbHeaders = { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, "Content-Type": "application/json" };
+
+async function saveOrder(order) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/orders`, {
+    method: "POST", headers: { ...sbHeaders, Prefer: "return=minimal" }, body: JSON.stringify(order),
+  });
+  if (!res.ok) throw new Error(await res.text());
+}
+
+async function loadOrderCounts() {
+  if (!supabaseReady) return;
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/rpc/order_counts`, { method: "POST", headers: sbHeaders, body: "{}" });
+    if (!res.ok) throw new Error(await res.text());
+    realOrders = Object.fromEntries((await res.json()).map(r => [r.product_name, r.orders]));
+    render();
+  } catch (err) {
+    console.error("Could not load order counts:", err);
+  }
+}
+
+const soldCount = p => realOrders[p.name] || 0;
+const totalRealOrders = () => Object.values(realOrders).reduce((a, b) => a + b, 0);
 
 function render() {
   // Friend listings also show up for "iphone" searches so they appear on the first page
@@ -49,16 +79,18 @@ function render() {
     (p.title + (p.name ? " iphone friends" : "")).toLowerCase().includes(query.toLowerCase()));
   if (sortBy === "low") list = [...list].sort((a, b) => a.price - b.price);
   if (sortBy === "high") list = [...list].sort((a, b) => b.price - a.price);
-  if (sortBy === "sold") list = [...list].sort((a, b) => b.sold - a.sold);
+  if (sortBy === "sold") list = [...list].sort((a, b) => soldCount(b) - soldCount(a));
 
+  const total = totalRealOrders();
   $("resultsTitle").textContent = query || "All products";
-  $("resultsCount").textContent = query.toLowerCase() === "iphone"
+  $("resultsCount").textContent = (query.toLowerCase() === "iphone"
     ? '48480 items found for "iphone"'
-    : `${list.length} items found for "${query}"`;
+    : `${list.length} items found for "${query}"`) + (total ? ` · ${total} real orders` : "");
 
   $("grid").innerHTML = list.length ? list.map(p => {
     const i = products.indexOf(p);
     const off = p.oldPrice ? Math.round((1 - p.price / p.oldPrice) * 100) : 0;
+    const sold = soldCount(p);
     return `
       <article class="card" data-id="${i}">
         <div class="thumb">
@@ -71,7 +103,7 @@ function render() {
           <div class="price">${fmt(p.price)}</div>
           ${off ? `<div class="discount"><s>${fmt(p.oldPrice)}</s> ${off}% Off</div>` : ""}
           <div class="meta">
-            <span>${p.sold ? p.sold + ' sold <span class="sep">|</span> ' : ""}<span class="stars">${stars(p.rating)}</span><span class="rc">(${p.reviews})</span></span>
+            <span>${sold ? sold + ' sold <span class="sep">|</span> ' : ""}<span class="stars">${stars(p.rating)}</span><span class="rc">(${p.reviews})</span></span>
             <span class="loc">${p.loc}</span>
           </div>
         </div>
@@ -87,14 +119,48 @@ function openProduct(i) {
   $("pdPerks").innerHTML = (current.perks || defaultPerks).map(t => `<li>${t}</li>`).join("");
   $("pdImage").alt = current.title;
   $("pdTitle").textContent = current.title;
-  $("pdRating").innerHTML = `<span class="stars">${stars(current.rating)}</span> ${current.rating} · ${current.reviews} Ratings · ${current.sold} sold`;
+  $("pdRating").innerHTML = `<span class="stars">${stars(current.rating)}</span> ${current.rating} · ${current.reviews} Ratings · ${soldCount(current)} sold`;
   $("pdPrice").textContent = fmt(current.price);
   $("pdOld").innerHTML = current.oldPrice
     ? `<s>${fmt(current.oldPrice)}</s> -${Math.round((1 - current.price / current.oldPrice) * 100)}%` : "";
   $("productModal").classList.add("show");
 }
 
-// Shows the friend they tried to buy (or a random friend if they clicked an iPhone / the cart)
+function openCheckout() {
+  $("coImage").src = encodeURI(current.img);
+  $("coTitle").textContent = current.title;
+  $("coQty").textContent = `${fmt(current.price)} × ${qty}`;
+  $("coTotal").textContent = fmt(current.price * qty);
+  $("coError").textContent = "";
+  $("productModal").classList.remove("show");
+  $("checkoutModal").classList.add("show");
+  $("coName").focus();
+}
+
+async function placeOrder(e) {
+  e.preventDefault();
+  const name = $("coName").value.trim();
+  if (!name) { $("coError").textContent = "Please enter your name."; return; }
+  if (!supabaseReady) { $("coError").textContent = "Orders aren't connected yet — add your Supabase URL and key in script.js."; return; }
+
+  $("coPlace").disabled = true;
+  $("coPlace").textContent = "Placing order…";
+  try {
+    await saveOrder({ buyer_name: name, product_name: current.name, product_title: current.title, qty, total: current.price * qty });
+    realOrders[current.name] = (realOrders[current.name] || 0) + 1;
+    render();
+    $("checkoutForm").reset();
+    prank();
+  } catch (err) {
+    console.error("Order failed:", err);
+    $("coError").textContent = "Couldn't place the order. Please try again.";
+  } finally {
+    $("coPlace").disabled = false;
+    $("coPlace").textContent = "Place Order";
+  }
+}
+
+// Shows the friend they tried to buy (or a random friend if they clicked the cart)
 function prank() {
   const f = current && current.name ? current : friends[Math.floor(Math.random() * friends.length)];
   $("prankPhoto").src = encodeURI(f.img);
@@ -102,6 +168,7 @@ function prank() {
     ? `YOU TRIED TO BUY ${f.name.toUpperCase()}? 😂`
     : `HAHA, YOU GOT PRANKED BY ${f.name.toUpperCase()}!`;
   $("productModal").classList.remove("show");
+  $("checkoutModal").classList.remove("show");
   $("modal").classList.add("show");
 }
 
@@ -145,7 +212,12 @@ $("addCart").onclick = () => {
   toast(`Added ${qty} to cart ✓`);
 };
 
-$("buyNow").onclick = prank;
+$("buyNow").onclick = openCheckout;
+$("checkoutForm").addEventListener("submit", placeOrder);
+$("closeCheckout").onclick = () => $("checkoutModal").classList.remove("show");
+$("checkoutModal").addEventListener("click", e => {
+  if (e.target.id === "checkoutModal") $("checkoutModal").classList.remove("show");
+});
 $("cartBtn").addEventListener("click", e => { e.preventDefault(); current = null; prank(); });
 
 document.querySelector("[data-close]").onclick = () => $("productModal").classList.remove("show");
@@ -155,3 +227,4 @@ $("productModal").addEventListener("click", e => {
 $("closeModal").onclick = () => $("modal").classList.remove("show");
 
 render();
+loadOrderCounts();
