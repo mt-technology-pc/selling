@@ -12,7 +12,7 @@
   <header class="header">
     <div class="header-inner">
       <a href="#" class="logo">
-        <span class="logo-icon">◆</span> Daraz
+        <img src="images/logo.png" alt="Daraz">
       </a>
       <div class="search-wrap">
         <form class="search" id="searchForm">
@@ -117,12 +117,7 @@
         <div class="pd-rating" id="pdRating"></div>
         <div class="pd-price" id="pdPrice"></div>
         <div class="pd-old" id="pdOld"></div>
-        <ul class="pd-perks">
-          <li>✅ 100% Original Device</li>
-          <li>🚚 Free Delivery Island-wide</li>
-          <li>🛡️ 6 Months Warranty</li>
-          <li>↩️ 7 Days Easy Return</li>
-        </ul>
+        <ul class="pd-perks" id="pdPerks"></ul>
         <div class="pd-qty">Quantity:
           <button id="qtyMinus">−</button><span id="qty">1</span><button id="qtyPlus">+</button>
         </div>
@@ -134,12 +129,32 @@
     </div>
   </div>
 
+  <!-- Checkout popup -->
+  <div class="modal" id="checkoutModal">
+    <form class="checkout-box" id="checkoutForm" novalidate>
+      <button type="button" class="close-x" id="closeCheckout" aria-label="Close">×</button>
+      <h2>Checkout</h2>
+      <div class="co-item">
+        <img id="coImage" src="" alt="">
+        <div>
+          <p class="co-title" id="coTitle"></p>
+          <p class="co-qty" id="coQty"></p>
+        </div>
+      </div>
+      <div class="co-total"><span>Total</span><strong id="coTotal"></strong></div>
+      <label class="co-label" for="coName">Your name</label>
+      <input class="co-input" id="coName" type="text" maxlength="60" placeholder="Enter your full name" autocomplete="name" required>
+      <p class="co-error" id="coError" role="alert"></p>
+      <button type="submit" class="co-place" id="coPlace">Place Order</button>
+    </form>
+  </div>
+
   <div class="toast" id="toast">Added to cart ✓</div>
 
   <!-- Prank popup -->
   <div class="modal" id="modal">
     <div class="modal-box">
-      <img class="friend-photo" src="images/friend.jpg" alt="" onerror="this.remove()">
+      <img class="friend-photo" id="prankPhoto" src="" alt="">
       <div class="modal-emoji">😂</div>
       <h2 id="prankTitle">YOU GOT PRANKED!</h2>
       <p>Nothing here is for sale. Keep your money 😜</p>
