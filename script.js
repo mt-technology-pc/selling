@@ -11,7 +11,7 @@ const products = [
     perks: ["🧠 Knows all the answers (after the exam)", "🍪 Accepts payment in biscuits", "😂 Laugh track included", "🚚 Free delivery — walks to you"] },
   { name: "Ragith", title: "Ragith Plus — Brand New Condition, Never Did Homework", price: 350, oldPrice: 20000, sold: 0, rating: 2.9, reviews: 4, loc: "Western", img: "images/ragith.png",
     perks: ["📚 Homework module not installed", "⚡ Fast charging: 1 samosa = full power", "🗣️ Voice assistant: talks non-stop", "❌ Non-refundable"] },
-  { name: "Diyon", title: "Diyon Mini — Clearance Sale, Comes With Free Birds 🐦", price: 20, oldPrice: 5000, sold: 0, rating: 1.9, reviews: 2, loc: "Western", img: "images/diyon.png",
+  { name: "Diyon", title: "Diyon Mini — Clearance Sale, Comes With Free Birds 🐦", price: 20, oldPrice: 5000, sold: 0, rating: 1.9, reviews: 2, loc: "Western", img: "images/diyon.jpg",
     perks: ["🐦 Free flying birds included (dizzy mode)", "😴 Always in low-power mode", "📦 Cheapest item in the store", "❌ No returns, seriously"] },
   { name: "Nibodh & Dilon", title: "COMBO DEAL 🔥 Nibodh + Dilon — Buy 1 Get 1 FREE", price: 599, oldPrice: 34999, sold: 12, rating: 4.2, reviews: 18, loc: "Western", img: "images/combo nibodh and dilon.png",
     perks: ["👯 Cannot be separated, sold as a pair", "🔊 Double the noise", "🎁 Free tempered glass (not really)", "⚠️ Seller not responsible for chaos"] },
