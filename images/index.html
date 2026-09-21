@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iphone - Buy iphone at Best Price</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <span class="logo-icon">◆</span> Daraz
+      </a>
+      <div class="search-wrap">
+        <form class="search" id="searchForm">
+          <input type="text" id="searchInput" value="iphone">
+          <button type="submit" aria-label="Search">
+            <svg viewBox="0 0 24 24" width="26" height="26"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </form>
+        <nav class="suggestions">
+          <a href="#">smart watch</a>
+          <a href="#">power bank</a>
+          <a href="#">watch for boys</a>
+          <a href="#">bags for girls</a>
+          <a href="#">earings for girls</a>
+        </nav>
+      </div>
+      <a href="#" class="cart" id="cartBtn" aria-label="Cart">
+        <span class="cart-badge" id="cartCount">0</span>
+        <svg viewBox="0 0 24 24" width="44" height="44"><path d="M2 3h3l2.5 12h11L21 7H6.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="9" cy="19" r="1.4" fill="currentColor"/><circle cx="17" cy="19" r="1.4" fill="currentColor"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- Categories bar -->
+  <div class="cat-bar">
+    <button class="cat-btn">Categories <span class="chev">⌄</span></button>
+  </div>
+
+  <main class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <section class="filter">
+        <h3>Category</h3>
+        <ul class="cat-list">
+          <li><a href="#">Phone Cables &amp; Converters</a></li>
+          <li><a href="#">Phone Screen Protectors</a></li>
+          <li><a href="#">SmartwatchStraps</a></li>
+          <li><a href="#">Phone Wall Chargers</a></li>
+          <li><a href="#">Mobile Phone Parts</a></li>
+          <li><a href="#">Phone Docks &amp; Stands</a></li>
+          <li><a href="#">TV Cables</a></li>
+          <li><a href="#">Mobile Phone Cases</a></li>
+        </ul>
+        <a href="#" class="view-more">VIEW MORE</a>
+      </section>
+
+      <section class="filter">
+        <h3>Brand</h3>
+        <ul class="brand-list">
+          <li><label><input type="checkbox"> UGREEN</label></li>
+          <li><label><input type="checkbox"> MissConnie</label></li>
+          <li><label><input type="checkbox"> Olige</label></li>
+          <li><label><input type="checkbox"> Caseunicorn</label></li>
+          <li><label><input type="checkbox"> toocki</label></li>
+          <li><label><input type="checkbox"> jakcom</label></li>
+          <li><label><input type="checkbox"> Jizetin</label></li>
+          <li><label><input type="checkbox"> Apple</label></li>
+          <li><label><input type="checkbox"> TOPK</label></li>
+          <li><label><input type="checkbox"> LDNIO</label></li>
+          <li><label><input type="checkbox"> apexel</label></li>
+          <li><label><input type="checkbox"> Ithmy</label></li>
+          <li><label><input type="checkbox"> ARMICO</label></li>
+          <li><label><input type="checkbox"> Vention</label></li>
+          <li><label><input type="checkbox"> Essager</label></li>
+          <li><label><input type="checkbox"> BASEUS</label></li>
+        </ul>
+      </section>
+    </aside>
+
+    <!-- Results -->
+    <section class="results">
+      <h1 id="resultsTitle">iphone</h1>
+      <div class="results-top">
+        <p class="count" id="resultsCount">48480 items found for "iphone"</p>
+        <div class="controls">
+          <label class="sort">Sort By:
+            <select id="sortSelect">
+              <option value="best">Best Match</option>
+              <option value="low">Price low to high</option>
+              <option value="high">Price high to low</option>
+              <option value="sold">Top Sales</option>
+            </select>
+          </label>
+          <div class="view">View:
+            <span class="view-grid active"></span>
+            <span class="view-list"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid" id="grid"></div>
+    </section>
+  </main>
+
+  <!-- Product detail popup -->
+  <div class="modal" id="productModal">
+    <div class="product-box">
+      <button class="close-x" data-close>×</button>
+      <img id="pdImage" src="" alt="">
+      <div class="pd-info">
+        <h2 id="pdTitle"></h2>
+        <div class="pd-rating" id="pdRating"></div>
+        <div class="pd-price" id="pdPrice"></div>
+        <div class="pd-old" id="pdOld"></div>
+        <ul class="pd-perks">
+          <li>✅ 100% Original Device</li>
+          <li>🚚 Free Delivery Island-wide</li>
+          <li>🛡️ 6 Months Warranty</li>
+          <li>↩️ 7 Days Easy Return</li>
+        </ul>
+        <div class="pd-qty">Quantity:
+          <button id="qtyMinus">−</button><span id="qty">1</span><button id="qtyPlus">+</button>
+        </div>
+        <div class="pd-actions">
+          <button class="buy-now" id="buyNow">Buy Now</button>
+          <button class="add-cart" id="addCart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Added to cart ✓</div>
+
+  <!-- Prank popup -->
+  <div class="modal" id="modal">
+    <div class="modal-box">
+      <img class="friend-photo" src="images/friend.jpg" alt="" onerror="this.remove()">
+      <div class="modal-emoji">😂</div>
+      <h2 id="prankTitle">YOU GOT PRANKED!</h2>
+      <p>Nothing here is for sale. Keep your money 😜</p>
+      <button id="closeModal">OK, you got me</button>
+    </div>
+  </div>
+
+  <button class="messages">💬 Messages</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
