@@ -7,7 +7,7 @@ const products = [
     perks: ["🔋 Battery: needs a snack every 2 hours", "🤓 Built-in glasses, free of charge", "📶 Replies to WhatsApp: sometimes", "❌ No warranty, no returns"] },
   { name: "Dilon", title: "Dilon Ultra — Genuine Model, Comes With Free Excuses", price: 999, oldPrice: 25000, sold: 1, rating: 3.4, reviews: 7, loc: "Western", img: "images/dilon.png",
     perks: ["⏰ Always 10 minutes late (feature, not bug)", "🍛 Runs on rice & curry", "🔊 Loud speaker built in", "↩️ 7 Days Return — seller will NOT accept"] },
-  { name: "Febian", title: "Febian Only — Single Unit, Limited Stock, Rare Edition", price: 250, oldPrice: 15000, sold: 2, rating: 3.8, reviews: 5, loc: "Western", img: "images/febian only.png",
+  { name: "Febian", title: "Febian Only — Single Unit, Limited Stock, Rare Edition", price: 0, oldPrice: 15000, sold: 0, rating: 3.8, reviews: 5, loc: "Western", img: "images/febian only.png",
     perks: ["💤 Sleep mode activates in class", "🎮 Pre-installed with games", "📦 Ships in school uniform", "🛡️ Warranty: 0 days"] },
   { name: "Nibodh", title: "Nibodh Lite — Budget Edition, Great Value for Money", price: 5999, oldPrice: 9999, sold: 4, rating: 4.0, reviews: 11, loc: "Western", img: "images/nibodh.png",
     perks: ["🧠 Knows all the answers (after the exam)", "🍪 Accepts payment in biscuits", "😂 Laugh track included", "🚚 Free delivery — walks to you"] },
