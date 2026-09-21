@@ -7,7 +7,7 @@ const products = [
     perks: ["🔋 Battery: needs a snack every 2 hours", "🤓 Built-in glasses, free of charge", "📶 Replies to WhatsApp: sometimes", "❌ No warranty, no returns"] },
   { name: "Dilon", title: "Dilon Ultra — Genuine Model, Comes With Free Excuses", price: 999, oldPrice: 25000, sold: 1, rating: 3.4, reviews: 7, loc: "Western", img: "images/dilon.png",
     perks: ["⏰ Always 10 minutes late (feature, not bug)", "🍛 Runs on rice & curry", "🔊 Loud speaker built in", "↩️ 7 Days Return — seller will NOT accept"] },
-  { name: "Febian", title: "Febian Only — Single Unit, Limited Stock, Bronze Edition", price: 0, oldPrice: 15000, sold: 0, rating: 3.8, reviews: 5, loc: "Western", img: "images/febian only.png",
+  { name: "Febian", title: "Febian Only — Single Unit, Limited Stock, Rare Edition", price: 250, oldPrice: 15000, sold: 2, rating: 3.8, reviews: 5, loc: "Western", img: "images/febian only.png",
     perks: ["💤 Sleep mode activates in class", "🎮 Pre-installed with games", "📦 Ships in school uniform", "🛡️ Warranty: 0 days"] },
   { name: "Nibodh", title: "Nibodh Lite — Budget Edition, Great Value for Money", price: 5999, oldPrice: 9999, sold: 4, rating: 4.0, reviews: 11, loc: "Western", img: "images/nibodh.png",
     perks: ["🧠 Knows all the answers (after the exam)", "🍪 Accepts payment in biscuits", "😂 Laugh track included", "🚚 Free delivery — walks to you"] },
@@ -25,7 +25,9 @@ const products = [
     perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
        { name: "Siddhatha Araryan banda", title: "Siddharth mal Max — Latest Model, Fresh Stock, Hurry Up!", price: 4500, oldPrice: 12000, sold: 3, rating: 3.6, reviews: 6, loc: "Western", img: "images/sid.png",
     perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
-];
+  { name: "Imadh Lareef", title: "Imadh Lareef limited stock pedo edition", price: -200, oldPrice: 12000, sold: 3, rating: 3.6, reviews: 6, loc: "Western", img: "images/imadh.png",
+    perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
+  ];
 
 const $ = id => document.getElementById(id);
 const fmt = n => "Rs. " + n.toLocaleString("en-US");
