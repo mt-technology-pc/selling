@@ -21,16 +21,8 @@ const products = [
     perks: ["👯 Cannot be separated, sold as a pair", "🔊 Double the noise", "🎁 Free tempered glass (not really)", "⚠️ Seller not responsible for chaos"] },
   { name: "Didula", title: "Didula Max — Latest Model, Fresh Stock, Hurry Up!", price: 150, oldPrice: 12000, sold: 3, rating: 3.6, reviews: 6, loc: "Western", img: "images/didula.png",
     perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
-  { title: "Genuine iphone 8, iphone 7 & iphone 6s With Warranty", price: 29900, oldPrice: 39900, sold: 37, rating: 4.8, reviews: 9,  loc: "North Central", img: "images/iphone-8-gold.svg" },
-  { title: "iPhone 7 32GB Phone only Best Cond A Grade Original",     price: 24000, sold: 7,  rating: 5.0, reviews: 1,  loc: "Western",       img: "images/iphone-7-rose.svg" },
-  { title: "iPhone 7 ✅128GB Phone only Best Condition A Grade Original free tempered", price: 29000, sold: 0, rating: 5.0, reviews: 1, loc: "Western", img: "images/iphone-7-silver.svg" },
-  { title: "Apple iPhone X ✅64GB Smartphone phone with box Free tempered", price: 54499, sold: 33, rating: 4.5, reviews: 8, loc: "Western", img: "images/iphone-x-silver.svg" },
-  { title: "iPhone 11 64GB Used Phone Excellent Condition Black",     price: 74900, oldPrice: 82000, sold: 51, rating: 4.7, reviews: 14, loc: "Western", img: "images/iphone-11-black.svg" },
-  { title: "iPhone 12 Pro 128GB Pacific Blue Used Phone with Box",    price: 129000, sold: 12, rating: 4.6, reviews: 4, loc: "Western",       img: "images/iphone-12pro-blue.svg" },
-  { title: "iPhone 11 Pro 256GB Midnight Green Mega Deals 9.9",       price: 109500, oldPrice: 124500, sold: 20, rating: 4.4, reviews: 6, loc: "Central", img: "images/iphone-11pro-green.svg" },
-  { title: "iPhone XR 64GB (PRODUCT)RED Special Edition Original",    price: 49999, sold: 18, rating: 4.3, reviews: 5,  loc: "Southern",      img: "images/iphone-xr-red.svg" },
-  { title: "iPhone 13 128GB Pink Brand New Sealed Pack",              price: 184900, oldPrice: 199000, sold: 64, rating: 4.9, reviews: 22, loc: "Western", img: "images/iphone-13-pink.svg" },
-  { title: "iPhone 14 Pro 256GB Deep Purple Dynamic Island",          price: 289000, sold: 9,  rating: 4.8, reviews: 3,  loc: "Western",       img: "images/iphone-14pro-purple.svg" }
+   { name: "Didula", title: "Didula Max — Latest Model, Fresh Stock, Hurry Up!", price: 150, oldPrice: 12000, sold: 3, rating: 3.6, reviews: 6, loc: "Western", img: "images/didula.png",
+    perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
 ];
 
 const $ = id => document.getElementById(id);
