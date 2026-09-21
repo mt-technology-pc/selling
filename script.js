@@ -25,7 +25,9 @@ const products = [
     perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
        { name: "Siddhatha Araryan banda", title: "Siddharth mal Max — Latest Model, Fresh Stock, Hurry Up!", price: 4500, oldPrice: 12000, sold: 3, rating: 3.6, reviews: 6, loc: "Western", img: "images/sid.png",
     perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
-  { name: "Imadh Lareef", title: "Imadh Lareef limited stock pedo edition", price: -200, oldPrice: 12000, sold: 3, rating: 3.6, reviews: 6, loc: "Western", img: "images/imadh.png",
+  { name: "Imadh Lareef", title: "Imadh Lareef limited stock pedo edition", price: 4500, oldPrice: 12000, sold: 3, rating: 3.6, reviews: 6, loc: "Western", img: "images/imadh.png",
+    perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
+   { name: "Imadh Lareef", title: "Shakeel bing chun edition jenna ortega bf", price: 4500, oldPrice: 12000, sold: 3, rating: 3.6, reviews: 6, loc: "Western", img: "images/imadh.png",
     perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
   ];
 
