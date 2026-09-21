@@ -1,6 +1,8 @@
 // Product data — edit titles, prices (numbers, in Rs.) and images here.
 // Friend listings have a `name` (used in the prank popup) and their own `perks`.
 const products = [
+  { name: "hanash", hot: true, title: "🔥 HOT SELLING 🔥 hanash — Buy 1 Get 1 FREE", price: 899, oldPrice: 34999, sold: 999, rating: 4.9, reviews: 512, loc: "Western", img: "images/Screenshot 2026-09-21 at 11.49.40.png",
+    perks: ["🔥 #1 Best Seller this week", "⚡ Selling fast — only 2 left in stock!", "🎁 Buy 1 Get 1 FREE (limited time)", "⚠️ Seller not responsible for chaos"] },
   { name: "Chenuk", title: "Chenuk Pro Max 2026 — Original, Slightly Used, No Box", price: 499, oldPrice: 49900, sold: 0, rating: 2.1, reviews: 3, loc: "Western", img: "images/chenuk.png",
     perks: ["🔋 Battery: needs a snack every 2 hours", "🤓 Built-in glasses, free of charge", "📶 Replies to WhatsApp: sometimes", "❌ No warranty, no returns"] },
   { name: "Dilon", title: "Dilon Ultra — Genuine Model, Comes With Free Excuses", price: 999, oldPrice: 25000, sold: 1, rating: 3.4, reviews: 7, loc: "Western", img: "images/dilon.png",
@@ -17,8 +19,6 @@ const products = [
     perks: ["👯 Cannot be separated, sold as a pair", "🔊 Double the noise", "🎁 Free tempered glass (not really)", "⚠️ Seller not responsible for chaos"] },
   { name: "the Squad", title: "MEGA COMBO PACK 🎉 Full Squad Bundle — 9.9 Mega Deals", price: 999, oldPrice: 99999, sold: 33, rating: 4.6, reviews: 27, loc: "Western", img: "images/combo pack.jpg",
     perks: ["📦 Whole gang in one box", "📸 Poses for every photo", "🍕 Warning: will eat all your food", "🚚 Free island-wide delivery"] },
-  { name: "hanash", title: "COMBO DEAL 🔥 hanash — Buy 1 Get 1 FREE", price: 899, oldPrice: 34999, sold: 12, rating: 4.2, reviews: 18, loc: "Western", img: "images/Screenshot 2026-09-21 at 11.49.40.png",
-    perks: ["👯 Cannot be separated, sold as a pair", "🔊 Double the noise", "🎁 Free tempered glass (not really)", "⚠️ Seller not responsible for chaos"] },
   { name: "Didula", title: "Didula Max — Latest Model, Fresh Stock, Hurry Up!", price: 150, oldPrice: 12000, sold: 3, rating: 3.6, reviews: 6, loc: "Western", img: "images/didula.png",
     perks: ["📱 Screen time: 12 hours a day", "🍗 Powered by fried chicken", "😎 Comes with free attitude", "❌ No refunds after opening the box"] },
    { name: "Didula", title: "Didula Max — Latest Model, Fresh Stock, Hurry Up!", price: 150, oldPrice: 12000, sold: 3, rating: 3.6, reviews: 6, loc: "Western", img: "images/didula.png",
@@ -58,6 +58,7 @@ function render() {
         <div class="thumb">
           <img src="${encodeURI(p.img)}" alt="${p.title}" loading="lazy">
           ${off ? `<span class="off-tag">-${off}%</span>` : ""}
+          ${p.hot ? `<span class="hot-tag">🔥 HOT SELLING</span>` : ""}
         </div>
         <div class="info">
           <h4>${p.title}</h4>
